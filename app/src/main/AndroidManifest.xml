@@ -4,17 +4,22 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/wc_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Login"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".home"
+            android:label="@string/title_activity_home" >
         </activity>
     </application>
 
