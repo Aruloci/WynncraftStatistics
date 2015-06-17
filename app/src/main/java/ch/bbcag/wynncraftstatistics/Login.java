@@ -1,9 +1,11 @@
 package ch.bbcag.wynncraftstatistics;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 
 
@@ -13,12 +15,23 @@ public class Login extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        String username = readUsername();
+        Log.v("Login", username);
+        if (!username.equals("")){
+            Intent homeIntent = new Intent(this, home.class);
+            homeIntent.putExtra("username", username);
+            startActivity(homeIntent);
+        }
 
-        final Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), home.class));
-            }
-        });
+
+        Button goButton = (Button) findViewById(R.id.button);
+        goButton.setOnClickListener(new GoButtonListener(this));
+    }
+
+    private String readUsername(){
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        String username = sharedPref.getString("username", "");
+        return username;
+
     }
 }

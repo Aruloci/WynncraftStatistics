@@ -33,7 +33,7 @@
         android:textColorHint="@color/grey"
         android:maxLength="16"
         android:textAlignment="center"
-        android:inputType="text"
+        android:inputType="textNoSuggestions"
         android:singleLine="true"
         android:gravity="center"
         android:cursorVisible="false" />
