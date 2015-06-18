@@ -1,10 +1,6 @@
 package ch.bbcag.wynncraftstatistics;
 
-import android.graphics.drawable.Drawable;
-import android.util.Log;
-
-import java.io.InputStream;
-import java.net.URL;
+import android.widget.ImageView;
 
 /**
  * Created by zpfisd on 18.06.2015.
@@ -15,16 +11,13 @@ public class Player {
     public Player() {
     }
 
-    public Drawable getPlayerIcon() {
+    public void getPlayerIcon(ImageView image) {
         String url = "https://api.wynncraft.com/avatar/" + this.playerName + "/256.png";
-        try {
-            InputStream is = (InputStream) new URL(url).getContent();
-            Drawable image = Drawable.createFromStream(is, "src name");
-            return image;
-        } catch (Exception e) {
-            Log.e("Player.java", e.toString());
-        }
-        return null;
+        new ImageDownloader(image).execute(url);
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 
     public void setPlayerName(String name) {

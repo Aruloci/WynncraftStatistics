@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class home extends ActionBarActivity
@@ -102,8 +103,13 @@ public class home extends ActionBarActivity
 
             Player user = new Player();
             user.setPlayerName(getActivity().getIntent().getStringExtra("username"));
+
             ImageView playerImage = (ImageView) rootView.findViewById(R.id.userIcon);
-            playerImage.setImageDrawable(user.getPlayerIcon());
+            user.getPlayerIcon(playerImage);
+
+            TextView username = (TextView) rootView.findViewById(R.id.username);
+            username.setText(user.getPlayerName());
+
             return rootView;
         }
 
