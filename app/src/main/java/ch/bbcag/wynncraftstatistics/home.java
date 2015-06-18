@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 
 public class home extends ActionBarActivity
@@ -29,7 +30,6 @@ public class home extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -99,6 +99,11 @@ public class home extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+            Player user = new Player();
+            user.setPlayerName(getActivity().getIntent().getStringExtra("username"));
+            ImageView playerImage = (ImageView) rootView.findViewById(R.id.userIcon);
+            playerImage.setImageDrawable(user.getPlayerIcon());
             return rootView;
         }
 
