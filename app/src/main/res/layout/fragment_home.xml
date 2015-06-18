@@ -4,9 +4,262 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="ch.bbcag.wynncraftstatistics.home$PlaceholderFragment">
+    tools:context="ch.bbcag.wynncraftstatistics.home$PlaceholderFragment"
+    android:id="@+id/home"
+    android:background="@drawable/bg">
 
     <TextView android:id="@+id/section_label" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/userIcon"
+        android:src="@drawable/test"
+        android:layout_below="@+id/section_label"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Eleking02"
+        android:id="@+id/username"
+        android:textSize="28sp"
+        android:layout_below="@+id/userIcon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="none"
+        android:id="@+id/tag"
+        android:layout_below="@+id/username"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color"
+        android:id="@+id/divider"
+        android:layout_alignEnd="@+id/userIcon"
+        android:layout_below="@+id/tag"
+        android:layout_toEndOf="@+id/playtimeIcon" />
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/playtimeIcon"
+        android:src="@drawable/minecraft"
+        android:layout_below="@+id/divider"
+        android:layout_toStartOf="@+id/userIcon"
+        android:layout_marginTop="10dp" />
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/totallevelIcon"
+        android:src="@drawable/exp"
+        android:layout_alignTop="@+id/totallevelText"
+        android:layout_alignEnd="@+id/divider" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="3.62h"
+        android:id="@+id/playtimeText"
+        android:textColor="@color/white"
+        android:layout_alignBottom="@+id/playtimeIcon"
+        android:layout_toEndOf="@+id/playtimeIcon"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="4dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Total Lvl: 38"
+        android:id="@+id/totallevelText"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_above="@+id/mageIcon"
+        android:layout_toEndOf="@+id/totallevelIcon"
+        android:enabled="true"
+        android:layout_marginLeft="4dp" />
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/mageIcon"
+        android:src="@drawable/mage"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/playtimeIcon"
+        android:layout_alignStart="@+id/playtimeIcon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Lv: 1"
+        android:id="@+id/mageLabel1"
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/mageIcon"
+        android:layout_alignStart="@+id/playtimeText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="_______"
+        android:id="@+id/mageDivider"
+        android:textColor="@color/white"
+        android:layout_below="@+id/mageLabel1"
+        android:layout_toEndOf="@+id/mageIcon"
+        android:layout_marginTop="-9dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Lv: 1"
+        android:id="@+id/mageLabel2"
+        android:textColor="@color/white"
+        android:layout_above="@+id/warriorIcon"
+        android:layout_alignStart="@+id/mageLabel1" />
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/archerIcon"
+        android:src="@drawable/archer"
+        android:layout_alignTop="@+id/mageIcon"
+        android:layout_alignStart="@+id/totallevelIcon" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Lv: 1"
+        android:id="@+id/archerLabel1"
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/archerIcon"
+        android:layout_alignStart="@+id/totallevelText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="_______"
+        android:id="@+id/archerDivider"
+        android:textColor="@color/white"
+        android:layout_below="@+id/archerLabel1"
+        android:layout_alignStart="@+id/archerLabel1"
+        android:layout_marginTop="-9dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Lv: 1"
+        android:id="@+id/archerLabel2"
+        android:textColor="@color/white"
+        android:layout_alignBottom="@+id/mageLabel2"
+        android:layout_alignStart="@+id/archerLabel1" />
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/warriorIcon"
+        android:src="@drawable/warrior"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/mageIcon"
+        android:layout_alignStart="@+id/mageIcon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Lv: 1"
+        android:id="@+id/warriorLabel1"
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/assassinIcon"
+        android:layout_alignStart="@+id/mageLabel2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="_______"
+        android:id="@+id/warriorDivider"
+        android:textColor="@color/white"
+        android:layout_below="@+id/warriorLabel1"
+        android:layout_alignStart="@+id/warriorLabel1"
+        android:layout_marginTop="-9dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Lv: 1"
+        android:id="@+id/warriorLabel2"
+        android:textColor="@color/white"
+        android:layout_alignBottom="@+id/assassinIcon"
+        android:layout_alignStart="@+id/warriorLabel1" />
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/assassinIcon"
+        android:src="@drawable/assassin"
+        android:layout_alignBottom="@+id/warriorIcon"
+        android:layout_alignStart="@+id/archerIcon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Lv: 1"
+        android:id="@+id/assassinLabel1"
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/assassinIcon"
+        android:layout_alignStart="@+id/archerLabel2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="_______"
+        android:id="@+id/assassinDivider"
+        android:textColor="@color/white"
+        android:layout_below="@+id/assassinLabel1"
+        android:layout_alignStart="@+id/assassinLabel1"
+        android:layout_marginTop="-9dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Lv: 1"
+        android:id="@+id/assassinLabel2"
+        android:textColor="@color/white"
+        android:layout_alignBottom="@+id/warriorLabel2"
+        android:layout_alignStart="@+id/assassinLabel1" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color"
+        android:id="@+id/dividerBottom"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/totallevelText"
+        android:layout_marginBottom="22dp" />
+
 
 </RelativeLayout>
