@@ -15,7 +15,6 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/userIcon"
-        android:src="@drawable/test"
         android:layout_below="@+id/section_label"
         android:layout_centerHorizontal="true" />
 
@@ -23,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Eleking02"
+        android:text=""
         android:id="@+id/username"
         android:textSize="28sp"
         android:layout_below="@+id/userIcon"
@@ -106,7 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Lv: 1"
+        android:text="Lv:75"
         android:id="@+id/mageLabel1"
         android:textColor="@color/white"
         android:layout_alignTop="@+id/mageIcon"
@@ -116,12 +115,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="_______"
+        android:text="────"
         android:id="@+id/mageDivider"
         android:textColor="@color/white"
-        android:layout_below="@+id/mageLabel1"
         android:layout_toEndOf="@+id/mageIcon"
-        android:layout_marginTop="-9dp" />
+        android:layout_alignTop="@+id/archerDivider"
+        android:layout_above="@+id/warriorIcon"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -156,12 +156,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="_______"
+        android:text="────"
         android:id="@+id/archerDivider"
         android:textColor="@color/white"
-        android:layout_below="@+id/archerLabel1"
         android:layout_alignStart="@+id/archerLabel1"
-        android:layout_marginTop="-9dp" />
+        android:layout_alignBottom="@+id/archerIcon"
+        android:layout_alignTop="@+id/archerLabel1"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -196,12 +197,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="_______"
+        android:text="────"
         android:id="@+id/warriorDivider"
         android:textColor="@color/white"
-        android:layout_below="@+id/warriorLabel1"
         android:layout_alignStart="@+id/warriorLabel1"
-        android:layout_marginTop="-9dp" />
+        android:layout_alignBottom="@+id/warriorLabel2"
+        android:layout_alignTop="@+id/warriorLabel1"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -235,12 +237,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="_______"
+        android:text="────"
         android:id="@+id/assassinDivider"
         android:textColor="@color/white"
-        android:layout_below="@+id/assassinLabel1"
         android:layout_alignStart="@+id/assassinLabel1"
-        android:layout_marginTop="-9dp" />
+        android:layout_alignBottom="@+id/assassinLabel2"
+        android:layout_alignTop="@+id/assassinLabel1"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
