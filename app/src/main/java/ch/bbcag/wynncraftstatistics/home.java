@@ -35,6 +35,8 @@ public class home extends ActionBarActivity
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.burger); //Sets burger
+
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
@@ -69,7 +71,10 @@ public class home extends ActionBarActivity
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
+        actionBar.setIcon(getResources().getDrawable(R.drawable.burger));
     }
+
+
 
     /**
      * A placeholder fragment containing a simple view.
@@ -109,6 +114,8 @@ public class home extends ActionBarActivity
 
             TextView username = (TextView) rootView.findViewById(R.id.username);
             username.setText(user.getPlayerName());
+
+
 
             return rootView;
         }
