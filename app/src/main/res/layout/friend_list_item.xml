@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="84dp"
+    android:background="@drawable/bg"
+    android:weightSum="1"
+    android:id="@+id/friendsItem">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/friendsItem_usericon"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/steve_head"/>
+
+    <TextView
+        android:layout_width="190dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/friendsItem_username"
+        android:textAlignment="center"
+        android:gravity="center_vertical"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="0.60" />
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/friendsItem_Server"
+        android:textAlignment="center"
+        android:gravity="center_vertical"
+        android:textSize="18sp"
+        android:textColor="#51CC56"
+        android:layout_marginBottom="10dp" />
+
+
+</LinearLayout>

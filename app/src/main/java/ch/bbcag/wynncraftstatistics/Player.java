@@ -7,8 +7,19 @@ import android.widget.ImageView;
  */
 public class Player {
     private String playerName;
+    private String currentServer;
 
     public Player() {
+        this("", null);
+    }
+
+    public Player(String playerName) {
+        this(playerName, null);
+    }
+
+    public Player(String playerName, String currentServer) {
+        this.playerName = playerName;
+        this.currentServer = currentServer;
     }
 
     public void getPlayerIcon(ImageView image) {
@@ -22,5 +33,9 @@ public class Player {
 
     public void setPlayerName(String name) {
         this.playerName = name;
+    }
+
+    public String getCurrentServer() {
+        return currentServer;
     }
 }

@@ -45,10 +45,32 @@ public class home extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        android.support.v4.app.Fragment selectedFragment = null;
+
+        switch (position) {
+            case 0:
+                selectedFragment = PlaceholderFragment.newInstance(position + 1);
+                break;
+            case 1:
+                selectedFragment = PlaceholderFragment.newInstance(position + 1);
+                break;
+            case 2:
+                selectedFragment = PlaceholderFragment.newInstance(position + 1);
+                break;
+            case 3:
+                selectedFragment = new FriendOverlookFragment();
+                break;
+            case 4:
+                selectedFragment = PlaceholderFragment.newInstance(position + 1);
+                break;
+
+        }
+
+
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, selectedFragment)
                 .commit();
     }
 

@@ -24,10 +24,6 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name=".FriendsOverlook"
-            android:label="@string/title_activity_friends_overlook" >
-        </activity>
     </application>
 
 </manifest>
