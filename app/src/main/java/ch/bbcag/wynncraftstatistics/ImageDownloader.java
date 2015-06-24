@@ -12,26 +12,29 @@ import java.io.InputStream;
  * Created by zdomaa on 18.06.2015.
  */
 public class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
-    ImageView bmImage;
+    private LruCacheUserIcons cache;
+    private String username;
+    private ImageView imageView;
 
-    public ImageDownloader(ImageView bmImage) {
-        this.bmImage = bmImage;
+    public  ImageDownloader (String username, LruCacheUserIcons cache, ImageView imageView){
+        this.username = username;
+        this.cache = cache;
+        this.imageView = imageView;
     }
-
-    protected Bitmap doInBackground(String... urls) {
-        String url = urls[0];
+    protected Bitmap doInBackground(String... params) {
         Bitmap mIcon = null;
         try {
-            InputStream in = new java.net.URL(url).openStream();
+            InputStream in = new java.net.URL(params[0]).openStream();
             mIcon = BitmapFactory.decodeStream(in);
+            cache.addBitmapToMemoryCache(params[1], mIcon);
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
         }
         return mIcon;
     }
 
-    protected void onPostExecute(Bitmap result) {
-        bmImage.setImageBitmap(result);
+    @Override
+    protected void onPostExecute(Bitmap bitmap) {
+        imageView.setImageBitmap(bitmap);
     }
-
 }

@@ -1,5 +1,6 @@
 package ch.bbcag.wynncraftstatistics;
 
+import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 /**
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 public class Player {
     private String playerName;
     private String currentServer;
+    private static LruCacheUserIcons cache = new LruCacheUserIcons();
 
     public Player() {
         this("", null);
@@ -22,10 +24,20 @@ public class Player {
         this.currentServer = currentServer;
     }
 
-    public void getPlayerIcon(ImageView image) {
-        String url = "https://api.wynncraft.com/avatar/" + this.playerName + "/256.png";
-        new ImageDownloader(image).execute(url);
+    public void loadPlayerIcon(ImageView imageView) {
+        final String imageKey = playerName;
+        final Bitmap bitmap = cache.getBitmapFromMemCache(imageKey);
+
+        if (bitmap != null) {
+            imageView.setImageBitmap(bitmap);
+        } else {
+            imageView.setImageResource(R.drawable.steve_head);
+            ImageDownloader task = new ImageDownloader(this.playerName, cache, imageView);
+            String[] url = {"https://api.wynncraft.com/avatar/" + this.playerName + "/256.png", this.playerName};
+            task.execute(url);
+        }
     }
+
 
     public String getPlayerName() {
         return playerName;

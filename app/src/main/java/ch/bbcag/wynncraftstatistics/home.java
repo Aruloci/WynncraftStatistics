@@ -133,7 +133,7 @@ public class home extends ActionBarActivity
             user.setPlayerName(getActivity().getIntent().getStringExtra("username"));
 
             ImageView playerImage = (ImageView) rootView.findViewById(R.id.userIcon);
-            user.getPlayerIcon(playerImage);
+            user.loadPlayerIcon(playerImage);
 
             TextView username = (TextView) rootView.findViewById(R.id.username);
             username.setText(user.getPlayerName());
