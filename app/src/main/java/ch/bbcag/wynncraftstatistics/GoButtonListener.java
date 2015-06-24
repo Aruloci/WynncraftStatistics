@@ -1,9 +1,11 @@
 package ch.bbcag.wynncraftstatistics;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.view.View;
 import android.widget.EditText;
 
@@ -11,7 +13,7 @@ import android.widget.EditText;
  * Created by zdomaa on 17.06.2015.
  */
 public class GoButtonListener implements View.OnClickListener {
-    private Activity activity;
+    private static Activity activity;
 
     public GoButtonListener(Activity activity){
         super();
@@ -22,17 +24,14 @@ public class GoButtonListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent homeIntent = new Intent(activity, home.class);
         EditText usernameView = (EditText) activity.findViewById(R.id.input);
         String username = usernameView.getText().toString();
 
-        homeIntent.putExtra("username", username);
-        this.saveUsername(username);
-
-        activity.startActivity(homeIntent);
+        new AsyncTaskJSONParser(null, 1, v.getContext(), null,(ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE), activity).execute(username);
     }
 
-    private void saveUsername(String username){
+
+    public static void saveUsername(String username){
         SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("username", username);

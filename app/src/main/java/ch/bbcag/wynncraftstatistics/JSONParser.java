@@ -1,7 +1,10 @@
 package ch.bbcag.wynncraftstatistics;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.EditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,7 +22,7 @@ import java.util.Map;
  */
 public class JSONParser {
     private static String TAG = "JSONParser";
-    private Context context;
+
 
     public static Map<String, String> parsePlayerStats (InputStream inputStream) {
         Map<String, String> playerStats = new HashMap<String, String>();
@@ -57,6 +60,31 @@ public class JSONParser {
         return playerStats;
     }
 
+    public static Map<String, String> vaidateUsername(InputStream inputStream, String username, Context context) {
+        Map<String, String> result = new HashMap<String, String>();
+
+        try {
+            String input = readInput(inputStream);
+            JSONObject playerObject = new JSONObject(input);
+            result.put("error", "false");
+            Intent homeIntent = new Intent(context, home.class);
+
+
+            homeIntent.putExtra("username", username);
+            GoButtonListener.saveUsername(username);
+            context.startActivity(homeIntent);
+
+        } catch (JSONException | IOException e) {
+            result.put("error", "true");
+        }
+        Log.v(TAG, result.toString());
+        return result;
+    }
+
+
+
+
+
     private static String readInput(InputStream inputStream) throws IOException {
         StringBuilder resultBuilder = new StringBuilder();
 
@@ -69,4 +97,5 @@ public class JSONParser {
 
         return resultBuilder.toString();
     }
+
 }
