@@ -1,5 +1,6 @@
 package ch.bbcag.wynncraftstatistics;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -18,6 +19,7 @@ import java.util.Map;
  */
 public class JSONParser {
     private static String TAG = "JSONParser";
+    private Context context;
 
     public static Map<String, String> parsePlayerStats (InputStream inputStream) {
         Map<String, String> playerStats = new HashMap<String, String>();
@@ -48,7 +50,8 @@ public class JSONParser {
                 playerStats.put(key + "_level", curClassLevelString);
             }
         } catch (JSONException | IOException e) {
-            Log.v(TAG, "JSON verschiesst: " + e.toString());
+
+
         }
         Log.v(TAG, playerStats.toString());
         return playerStats;

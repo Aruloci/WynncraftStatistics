@@ -127,6 +127,8 @@ public class home extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+
+
             PlayerStatsHolder holder;
             View rootView = inflater.inflate(R.layout.fragment_home, container, false);
             Player user = new Player();
@@ -153,7 +155,7 @@ public class home extends ActionBarActivity
                     (TextView) rootView.findViewById(R.id.assassinLabel1),
                     (TextView) rootView.findViewById(R.id.assassinLabel2)
             );
-            new AsyncTaskJSONParser(null, 0, getActivity().getApplicationContext(), holder, (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE)).execute(user.getPlayerName());
+            new AsyncTaskJSONParser(null, 0, getActivity().getApplicationContext(), holder, (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity()).execute(user.getPlayerName());
             return rootView;
         }
 
