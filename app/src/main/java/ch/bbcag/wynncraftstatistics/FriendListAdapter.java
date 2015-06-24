@@ -28,9 +28,9 @@ public class FriendListAdapter extends ArrayAdapter<Player> {
         convertView = mInflater.inflate(R.layout.friend_list_item, null);
         final Player currItem = (Player) items.get(position);
 
+
         ImageView userIcon = (ImageView) convertView.findViewById(R.id.friendsItem_usericon);
         currItem.getPlayerIcon(userIcon);
-
         TextView username = (TextView) convertView.findViewById(R.id.friendsItem_username);
         username.setText(currItem.getPlayerName());
 
@@ -41,7 +41,5 @@ public class FriendListAdapter extends ArrayAdapter<Player> {
         }
 
         return convertView;
-
     }
-
 }

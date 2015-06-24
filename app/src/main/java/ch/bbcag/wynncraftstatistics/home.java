@@ -1,6 +1,8 @@
 package ch.bbcag.wynncraftstatistics;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -93,7 +95,6 @@ public class home extends ActionBarActivity
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
-        actionBar.setIcon(getResources().getDrawable(R.drawable.burger));
     }
 
 
@@ -126,8 +127,8 @@ public class home extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+            PlayerStatsHolder holder;
             View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-
             Player user = new Player();
             user.setPlayerName(getActivity().getIntent().getStringExtra("username"));
 
@@ -137,8 +138,22 @@ public class home extends ActionBarActivity
             TextView username = (TextView) rootView.findViewById(R.id.username);
             username.setText(user.getPlayerName());
 
+            holder = new PlayerStatsHolder(
+                    (ImageView) rootView.findViewById(R.id.userIcon),
+                    (TextView) rootView.findViewById(R.id.rank),
+                    (TextView) rootView.findViewById(R.id.playtimeText),
+                    (TextView) rootView.findViewById(R.id.totallevelText),
 
-
+                    (TextView) rootView.findViewById(R.id.mageLabel1),
+                    (TextView) rootView.findViewById(R.id.mageLabel2),
+                    (TextView) rootView.findViewById(R.id.archerLabel1),
+                    (TextView) rootView.findViewById(R.id.archerLabel2),
+                    (TextView) rootView.findViewById(R.id.warriorLabel1),
+                    (TextView) rootView.findViewById(R.id.warriorLabel2),
+                    (TextView) rootView.findViewById(R.id.assassinLabel1),
+                    (TextView) rootView.findViewById(R.id.assassinLabel2)
+            );
+            new AsyncTaskJSONParser(null, 0, getActivity().getApplicationContext(), holder, (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE)).execute(user.getPlayerName());
             return rootView;
         }
 

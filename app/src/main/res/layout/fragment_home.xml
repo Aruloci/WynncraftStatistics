@@ -16,7 +16,8 @@
         android:layout_height="150dp"
         android:id="@+id/userIcon"
         android:layout_below="@+id/section_label"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/steve_head" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="none"
-        android:id="@+id/tag"
+        android:id="@+id/rank"
         android:layout_below="@+id/username"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white" />
@@ -47,7 +48,7 @@
         android:background="@color/divider_color"
         android:id="@+id/divider"
         android:layout_alignEnd="@+id/userIcon"
-        android:layout_below="@+id/tag"
+        android:layout_below="@+id/rank"
         android:layout_toEndOf="@+id/playtimeIcon" />
 
     <ImageView
@@ -118,10 +119,10 @@
         android:text="────"
         android:id="@+id/mageDivider"
         android:textColor="@color/white"
-        android:layout_toEndOf="@+id/mageIcon"
-        android:layout_alignTop="@+id/archerDivider"
-        android:layout_above="@+id/warriorIcon"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_alignStart="@+id/mageLabel1"
+        android:layout_alignBottom="@+id/mageIcon"
+        android:layout_alignTop="@+id/mageLabel1" />
 
     <TextView
         android:layout_width="wrap_content"
