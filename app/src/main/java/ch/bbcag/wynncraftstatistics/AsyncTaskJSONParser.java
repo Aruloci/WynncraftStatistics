@@ -29,7 +29,7 @@ public class AsyncTaskJSONParser extends AsyncTask<String, Void , Map<String, St
 
 
     public AsyncTaskJSONParser(ProgressDialog mDialog, int methodeType, Context context, Holder holder, ConnectivityManager connectivityManager, Activity activity){
-        // this.mDialog = mDialog;
+        this.mDialog = mDialog;
         this.methodeType = methodeType;
         this.context = context;
         this.holder = holder;
@@ -58,6 +58,7 @@ public class AsyncTaskJSONParser extends AsyncTask<String, Void , Map<String, St
                     if (methodeType == 0) {
                         result = JSONParser.parsePlayerStats(connection.getInputStream());
                     } else if (methodeType == 1) {
+                        result = JSONParser.vaidateUsername(connection.getInputStream(),  params[0], context);
                     }
 
                 } else {
@@ -70,11 +71,27 @@ public class AsyncTaskJSONParser extends AsyncTask<String, Void , Map<String, St
                 Log.e(TAG, "An error occurred while loading the data in the background", e);
             }
         }
+        if (this.mDialog != null) {
+            this.mDialog.dismiss();
+        }
+
         return result;
     }
 
     @Override
     protected void onPostExecute(Map<String, String> result) {
+
+        if (!isNetworkConnectionAvailable()) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+            alert.setTitle("Internet Connection failed");
+            alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+
+                }
+            });
+
+            alert.show();
+        } else {
 
         if (result != null) {
             if (methodeType == 0) {
@@ -102,7 +119,7 @@ public class AsyncTaskJSONParser extends AsyncTask<String, Void , Map<String, St
                 holder.getAssassinLabel1().setText("Lvl: " + result.get("assassin_level"));
                 holder.getAssassinLabel2().setText("Lvl: " + result.get("ninja_level"));
             } else if (methodeType == 1) {
-
+                // Nothing
             } else if (methodeType == 2) {
 
             }
@@ -116,6 +133,15 @@ public class AsyncTaskJSONParser extends AsyncTask<String, Void , Map<String, St
             });
 
             alert.show();
+            }
+        }
+
+    }
+
+    @Override
+    protected void onCancelled() {
+        if (this.mDialog != null) {
+            this.mDialog.dismiss();
         }
     }
 
