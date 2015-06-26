@@ -2,11 +2,9 @@ package ch.bbcag.wynncraftstatistics;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Button;
 
@@ -23,6 +21,7 @@ public class Login extends Activity {
         if (!username.equals("")){
             Intent homeIntent = new Intent(this, home.class);
             homeIntent.putExtra("username", username);
+            homeIntent.putExtra("mode", "ownName");
             startActivity(homeIntent);
         }
 

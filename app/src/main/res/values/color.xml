@@ -6,4 +6,5 @@
     <item name="orange" type="color">#FFAA00</item>
     <item name="red" type="color">#AA0000</item>
     <item name="aqua" type="color">#55FFFF</item>
+    <item name="green" type="color">#00AA00</item>
 </resources>

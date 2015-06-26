@@ -1,6 +1,7 @@
 package ch.bbcag.wynncraftstatistics;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -19,7 +20,9 @@ import android.widget.TextView;
 public class home extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
+
     /**
+     *
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
@@ -48,16 +51,16 @@ public class home extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         android.support.v4.app.Fragment selectedFragment = null;
-
+        this.getIntent().putExtra("mode", "ownName");
         switch (position) {
             case 0:
-                selectedFragment = PlaceholderFragment.newInstance(position + 1);
+                selectedFragment = new HomeFragment();
                 break;
             case 1:
-                selectedFragment = PlaceholderFragment.newInstance(position + 1);
+                selectedFragment = new HomeFragment();
                 break;
             case 2:
-                selectedFragment = PlaceholderFragment.newInstance(position + 1);
+                selectedFragment = new HomeFragment();
                 break;
             case 3:
                 selectedFragment = new FriendOverlookFragment();
@@ -71,9 +74,7 @@ public class home extends ActionBarActivity
 
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, selectedFragment)
-                .commit();
+        fragmentManager.beginTransaction().replace(R.id.container, selectedFragment).commit();
     }
 
     public void onSectionAttached(int number) {
@@ -103,7 +104,8 @@ public class home extends ActionBarActivity
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
-        /**
+        private ProgressDialog mDialog;
+         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
@@ -135,7 +137,7 @@ public class home extends ActionBarActivity
             user.setPlayerName(getActivity().getIntent().getStringExtra("username"));
 
             ImageView playerImage = (ImageView) rootView.findViewById(R.id.userIcon);
-            user.loadPlayerIcon(playerImage);
+            user.loadPlayerIcon(playerImage, 256);
 
             TextView username = (TextView) rootView.findViewById(R.id.username);
             username.setText(user.getPlayerName());
@@ -145,7 +147,6 @@ public class home extends ActionBarActivity
                     (TextView) rootView.findViewById(R.id.rank),
                     (TextView) rootView.findViewById(R.id.playtimeText),
                     (TextView) rootView.findViewById(R.id.totallevelText),
-
                     (TextView) rootView.findViewById(R.id.mageLabel1),
                     (TextView) rootView.findViewById(R.id.mageLabel2),
                     (TextView) rootView.findViewById(R.id.archerLabel1),
@@ -155,7 +156,9 @@ public class home extends ActionBarActivity
                     (TextView) rootView.findViewById(R.id.assassinLabel1),
                     (TextView) rootView.findViewById(R.id.assassinLabel2)
             );
-            new AsyncTaskJSONParser(null, 0, getActivity().getApplicationContext(), holder, (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity()).execute(user.getPlayerName());
+            mDialog = ProgressDialog.show(getActivity(), "Loading", "Please wait...");
+            new AsyncTaskJSONParser(mDialog, 0, getActivity().getApplicationContext(), holder,
+                    (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity()).execute(user.getPlayerName());
             return rootView;
         }
 
@@ -166,5 +169,4 @@ public class home extends ActionBarActivity
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
-
 }

@@ -30,7 +30,7 @@ public class FriendListAdapter extends ArrayAdapter<Player> {
 
 
         ImageView userIcon = (ImageView) convertView.findViewById(R.id.friendsItem_usericon);
-        currItem.loadPlayerIcon(userIcon);
+        currItem.loadPlayerIcon(userIcon, 64);
         TextView username = (TextView) convertView.findViewById(R.id.friendsItem_username);
         username.setText(currItem.getPlayerName());
 

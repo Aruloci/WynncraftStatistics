@@ -10,6 +10,16 @@ public class Player {
     private String playerName;
     private String currentServer;
     private static LruCacheUserIcons cache = new LruCacheUserIcons();
+    private ImageDownloader task;
+
+    /**
+     * Cancels the loadImage task
+     */
+    public void cancel() {
+        if (task != null) {
+            task.cancel(true);
+        }
+    }
 
     public Player() {
         this("", null);
@@ -24,16 +34,18 @@ public class Player {
         this.currentServer = currentServer;
     }
 
-    public void loadPlayerIcon(ImageView imageView) {
+    public void loadPlayerIcon(ImageView imageView, int size) {
         final String imageKey = playerName;
-        final Bitmap bitmap = cache.getBitmapFromMemCache(imageKey);
+        final Bitmap bitmap = cache.getBitmapFromMemCache(imageKey + size);
 
         if (bitmap != null) {
             imageView.setImageBitmap(bitmap);
         } else {
             imageView.setImageResource(R.drawable.steve_head);
-            ImageDownloader task = new ImageDownloader(this.playerName, cache, imageView);
-            String[] url = {"https://api.wynncraft.com/avatar/" + this.playerName + "/256.png", this.playerName};
+            task = new ImageDownloader(this.playerName, cache, imageView);
+            String[] url = {"https://api.wynncraft.com/avatar/"
+                    + this.playerName + "/"
+                    + size + ".png", this.playerName, String.valueOf(size)};
             task.execute(url);
         }
     }

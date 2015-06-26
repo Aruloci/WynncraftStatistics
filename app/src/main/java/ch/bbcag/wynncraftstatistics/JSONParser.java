@@ -2,10 +2,9 @@ package ch.bbcag.wynncraftstatistics;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.EditText;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,11 +52,28 @@ public class JSONParser {
                 playerStats.put(key + "_level", curClassLevelString);
             }
         } catch (JSONException | IOException e) {
-
-
+            Log.e(TAG, e.toString());
         }
         Log.v(TAG, playerStats.toString());
         return playerStats;
+    }
+
+    public static Map<String, String> parseFriends(InputStream inputStream, String username) {
+        Map<String, String> result = new HashMap<String, String>();
+
+        try {
+            String input = readInput(inputStream);
+            JSONObject playerObject = new JSONObject(input);
+            JSONArray friendArray = playerObject.getJSONArray("friends");
+
+           for (Integer i = 0; i < friendArray.length(); i++) {
+               result.put(i.toString(), friendArray.getString(i));
+           }
+        } catch (JSONException | IOException e) {
+            Log.e(TAG + " parseFriends()", e.toString());
+        }
+        Log.v(TAG, result.toString());
+        return result;
     }
 
     public static Map<String, String> vaidateUsername(InputStream inputStream, String username, Context context) {
@@ -71,6 +87,7 @@ public class JSONParser {
 
 
             homeIntent.putExtra("username", username);
+            homeIntent.putExtra("mode", "ownName");
             GoButtonListener.saveUsername(username);
             context.startActivity(homeIntent);
 

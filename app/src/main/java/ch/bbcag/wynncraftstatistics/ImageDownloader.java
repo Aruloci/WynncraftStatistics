@@ -26,7 +26,7 @@ public class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
         try {
             InputStream in = new java.net.URL(params[0]).openStream();
             mIcon = BitmapFactory.decodeStream(in);
-            cache.addBitmapToMemoryCache(params[1], mIcon);
+            cache.addBitmapToMemoryCache(params[1] + params[2], mIcon);
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
         }
