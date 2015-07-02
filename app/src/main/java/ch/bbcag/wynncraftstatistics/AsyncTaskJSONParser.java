@@ -98,7 +98,7 @@ public class AsyncTaskJSONParser extends AsyncTask<String, Void , Map<String, St
 
         if (!isNetworkConnectionAvailable()) {
             AlertDialog.Builder alert = new AlertDialog.Builder(activity);
-            alert.setTitle("No internet connection available");
+            alert.setTitle(activity.getString(R.string.no_connection));
             alert.setNeutralButton("OK", null);
 
             alert.show();
@@ -135,7 +135,7 @@ public class AsyncTaskJSONParser extends AsyncTask<String, Void , Map<String, St
                     friendsList.setAdapter(new FriendListAdapter(context, friendsArray, activity.getLayoutInflater()));
                 }
             } else {
-                Toast toast = Toast.makeText(context, "User was not found", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(context, activity.getString(R.string.user_not_found), Toast.LENGTH_SHORT);
                 toast.show();
             }
         }
