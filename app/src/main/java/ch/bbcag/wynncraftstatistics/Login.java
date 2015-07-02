@@ -19,7 +19,7 @@ public class Login extends Activity {
         String username = readUsername();
         Log.v("Login", username);
         if (!username.equals("")){
-            Intent homeIntent = new Intent(this, home.class);
+            Intent homeIntent = new Intent(this, HomeScreen.class);
             homeIntent.putExtra("username", username);
             homeIntent.putExtra("mode", "ownName");
             startActivity(homeIntent);

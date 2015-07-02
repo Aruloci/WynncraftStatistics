@@ -85,7 +85,7 @@ public class JSONParser {
             String input = readInput(inputStream);
             JSONObject playerObject = new JSONObject(input);
             result.put("error", "false");
-            Intent homeIntent = new Intent(context, home.class);
+            Intent homeIntent = new Intent(context, HomeScreen.class);
 
 
             homeIntent.putExtra("username", username);
