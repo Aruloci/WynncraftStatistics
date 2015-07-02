@@ -156,7 +156,7 @@ public class HomeScreen extends ActionBarActivity
                     (TextView) rootView.findViewById(R.id.assassinLabel1),
                     (TextView) rootView.findViewById(R.id.assassinLabel2)
             );
-            mDialog = ProgressDialog.show(getActivity(), "Loading", "Please wait...");
+            mDialog = ProgressDialog.show(getActivity(), getString(R.string.loading), getString(R.string.wait));
             new AsyncTaskJSONParser(mDialog, 0, getActivity().getApplicationContext(), holder,
                     (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity()).execute(user.getPlayerName());
 
