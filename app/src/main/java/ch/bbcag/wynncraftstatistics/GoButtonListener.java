@@ -26,7 +26,7 @@ public class GoButtonListener implements View.OnClickListener {
     public void onClick(View v) {
         EditText usernameView = (EditText) activity.findViewById(R.id.input);
         String username = usernameView.getText().toString();
-        mDialog = ProgressDialog.show(activity , "Loading", "Please wait...");
+        mDialog = ProgressDialog.show(activity , activity.getString(R.string.loading), activity.getString(R.string.wait));
         new AsyncTaskJSONParser(mDialog, 1, v.getContext(),(Holder) null,(ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE), activity).execute(username);
     }
 

@@ -10,6 +10,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_friends_overlook">FriendsOverlook</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_test">Test</string>
+    <string name="levelText">Total Lvl:</string>
+
+    <string name="loading">Loading...</string>
+    <string name="wait">Please wait...</string>
 </resources>

@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class home extends ActionBarActivity
+public class HomeScreen extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
 
@@ -105,7 +105,7 @@ public class home extends ActionBarActivity
      */
     public static class PlaceholderFragment extends Fragment {
         private ProgressDialog mDialog;
-         /**
+        /**
          * The fragment argument representing the section number for this
          * fragment.
          */
@@ -159,13 +159,14 @@ public class home extends ActionBarActivity
             mDialog = ProgressDialog.show(getActivity(), "Loading", "Please wait...");
             new AsyncTaskJSONParser(mDialog, 0, getActivity().getApplicationContext(), holder,
                     (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity()).execute(user.getPlayerName());
+
             return rootView;
         }
 
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((home) activity).onSectionAttached(
+            ((HomeScreen) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }

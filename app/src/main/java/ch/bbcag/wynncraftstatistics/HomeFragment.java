@@ -6,6 +6,8 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -24,7 +26,7 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         Player user = new Player();
         if(getActivity().getIntent().getStringExtra("mode").equals("ownName")){
-            user.setPlayerName(getActivity().getIntent().getStringExtra("username"));
+            user.setPlayerName(this.getActivity().getIntent().getStringExtra("username"));
         } else if (getActivity().getIntent().getStringExtra("mode").equals("friendName")){
             user.setPlayerName(getActivity().getIntent().getStringExtra("friendName"));
         }
@@ -50,11 +52,17 @@ public class HomeFragment extends Fragment {
                 (TextView) rootView.findViewById(R.id.assassinLabel1),
                 (TextView) rootView.findViewById(R.id.assassinLabel2)
         );
-        mDialog = ProgressDialog.show(getActivity(), "Loading", "Please wait...");
+        mDialog = ProgressDialog.show(getActivity(), getString(R.string.loading), getString(R.string.wait));
         new AsyncTaskJSONParser(mDialog, 0, getActivity().getApplicationContext(), holder, (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity()).execute(user.getPlayerName());
 
 
         return rootView;
 
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.empty_menu, menu);
     }
 }

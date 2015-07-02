@@ -3,7 +3,6 @@ package ch.bbcag.wynncraftstatistics;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -69,7 +68,7 @@ public class AsyncTaskJSONParser extends AsyncTask<String, Void , Map<String, St
 
                 int responseCode = connection.getResponseCode();
 
-                if (HttpURLConnection.HTTP_OK == responseCode) {
+                if (responseCode == HttpURLConnection.HTTP_OK) {
                     if (methodeType == 0) {
                         result = JSONParser.parsePlayerStats(connection.getInputStream());
                     } else if (methodeType == 1) {
@@ -77,7 +76,6 @@ public class AsyncTaskJSONParser extends AsyncTask<String, Void , Map<String, St
                     } else if (methodeType == 2) {
                         result = JSONParser.parseFriends(connection.getInputStream(), params[0]);
                     }
-
                 } else {
                     Log.e(TAG, String.format("An error occurred while loading the data in the background. HTTP status: %d", responseCode));
                 }
@@ -101,10 +99,7 @@ public class AsyncTaskJSONParser extends AsyncTask<String, Void , Map<String, St
         if (!isNetworkConnectionAvailable()) {
             AlertDialog.Builder alert = new AlertDialog.Builder(activity);
             alert.setTitle("No internet connection available");
-            alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                }
-            });
+            alert.setNeutralButton("OK", null);
 
             alert.show();
         } else {
@@ -123,6 +118,8 @@ public class AsyncTaskJSONParser extends AsyncTask<String, Void , Map<String, St
                         holder.getRank().setTextColor(context.getResources().getColor(R.color.aqua));
                     } else if (rank.equals("VIP")) {
                         holder.getRank().setTextColor(context.getResources().getColor(R.color.green));
+                    } else if (rank.equals("Media")) {
+                        holder.getRank().setTextColor(context.getResources().getColor(R.color.violet));
                     }
 
                     validatePlayerLevel(result);

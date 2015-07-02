@@ -20,7 +20,7 @@ import java.util.Map;
  * Created by zpfisd on 24.06.2015.
  */
 public class JSONParser {
-    private static String TAG = "JSONParser";
+    private static final String TAG = "JSONParser";
 
 
     public static Map<String, String> parsePlayerStats (InputStream inputStream) {
@@ -67,10 +67,12 @@ public class JSONParser {
             JSONArray friendArray = playerObject.getJSONArray("friends");
 
            for (Integer i = 0; i < friendArray.length(); i++) {
-               result.put(i.toString(), friendArray.getString(i));
+               if (!friendArray.getString(i).isEmpty()) {
+                   result.put(i.toString(), friendArray.getString(i));
+               }
            }
         } catch (JSONException | IOException e) {
-            Log.e(TAG + " parseFriends()", e.toString());
+            Log.e(TAG, e.toString());
         }
         Log.v(TAG, result.toString());
         return result;
