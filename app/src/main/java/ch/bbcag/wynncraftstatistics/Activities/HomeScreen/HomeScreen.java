@@ -3,6 +3,7 @@ package ch.bbcag.wynncraftstatistics.Activities.HomeScreen;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import ch.bbcag.wynncraftstatistics.Activities.Login;
 import ch.bbcag.wynncraftstatistics.JSON.PlayerStatsFetcher;
 import ch.bbcag.wynncraftstatistics.Player.Player;
 import ch.bbcag.wynncraftstatistics.Player.PlayerStatsHolder;
@@ -56,6 +58,7 @@ public class HomeScreen extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         android.support.v4.app.Fragment selectedFragment = null;
+        boolean isLogout = false;
         this.getIntent().putExtra("mode", "ownName");
         switch (position) {
             case 0:
@@ -65,21 +68,27 @@ public class HomeScreen extends ActionBarActivity
                 selectedFragment = new HomeFragment();
                 break;
             case 2:
-                selectedFragment = new HomeFragment();
+                selectedFragment = new ServerOverlookFragment();
                 break;
             case 3:
                 selectedFragment = new FriendOverlookFragment();
                 break;
             case 4:
-                selectedFragment = PlaceholderFragment.newInstance(position + 1);
+                isLogout = true;
                 break;
 
         }
 
 
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, selectedFragment).commit();
+        if (!isLogout) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.container, selectedFragment).commit();
+        } else {
+            Intent logout = new Intent(this, Login.class);
+            logout.putExtra("ignoreSavedName", "true");
+            this.startActivity(logout);
+        }
     }
 
     public void onSectionAttached(int number) {

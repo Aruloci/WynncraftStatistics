@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="84dp"
+    android:id="@+id/friendsItem">
+
+    <TextView
+        android:layout_width="220dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/serverItem_name"
+        android:textAlignment="center"
+        android:gravity="center_vertical"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="110dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/serveritem_playercount"
+        android:textAlignment="center"
+        android:gravity="center_vertical|right"
+        android:textSize="18sp"
+        android:textColor="#51CC56"
+        android:layout_marginBottom="10dp"
+        android:paddingRight="20dp" />
+
+
+</LinearLayout>

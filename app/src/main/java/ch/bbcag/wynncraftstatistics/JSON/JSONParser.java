@@ -15,9 +15,11 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.TreeMap;
 
 import ch.bbcag.wynncraftstatistics.Activities.HomeScreen.HomeScreen;
 import ch.bbcag.wynncraftstatistics.Listener.GoButtonListener;
+import ch.bbcag.wynncraftstatistics.ValueComparator;
 
 /**
  * Created by zpfisd on 24.06.2015.
@@ -80,6 +82,40 @@ public class JSONParser {
         Log.v(TAG, result.toString());
         return result;
     }
+
+    public static Map<String, String> parseServer(InputStream inputStream) {
+        HashMap<String,String> unsorted = new HashMap<String,String>();
+        ValueComparator bvc =  new ValueComparator(unsorted);
+        TreeMap<String,String> sorted_map = new TreeMap<String,String>(bvc);
+
+
+        try {
+            String input = readInput(inputStream);
+            JSONObject allServer = new JSONObject(input);
+            Iterator keys = allServer.keys();
+
+            while (keys.hasNext()) {
+                String key = (String) keys.next();
+                Log.v(TAG, "Current class: " + key);
+                if (key.contains("WC")) {
+                    JSONArray server = allServer.getJSONArray(key);
+                    if (server.length() > 0){
+
+                        Integer lengthInt = new Integer(server.length());
+                        String lengthString = new String(lengthInt.toString());
+                        unsorted.put(key, lengthString);
+
+                    }
+                }
+            }
+            sorted_map.putAll(unsorted);
+        } catch (JSONException | IOException e) {
+            Log.e(TAG, e.toString());
+        }
+        Log.v(TAG, sorted_map.toString());
+        return sorted_map;
+    }
+
 
     public static Map<String, String> vaidateUsername(InputStream inputStream, String username, Context context) {
         Map<String, String> result = new HashMap<String, String>();

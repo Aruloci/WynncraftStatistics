@@ -22,7 +22,10 @@ public class Login extends Activity {
 
         String username = readUsername();
         Log.v("Login", username);
-        if (!username.equals("")){
+
+
+        if (!username.equals("") && getIntent().getStringExtra("ignoreSavedName") == null){
+
             Intent homeIntent = new Intent(this, HomeScreen.class);
             homeIntent.putExtra("username", username);
             homeIntent.putExtra("mode", "ownName");
@@ -40,6 +43,5 @@ public class Login extends Activity {
         return username;
 
     }
-
 
 }
