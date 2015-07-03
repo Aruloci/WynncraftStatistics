@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ public class FriendOverlookFragment extends Fragment {
     private ParseFriendsFetcher asyncTaskJSONParser = null;
     private FriendSearcher friendSearcher;
     private EditText searchBar = null;
+    private ListView playerList;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         myView = inflater.inflate(R.layout.search_layout, container, false);
@@ -47,8 +49,8 @@ public class FriendOverlookFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                friendSearcher.readInput(searchBar);
-                ListView friendList = (ListView) myView.findViewById(R.id.friendlist);
+//                friendSearcher.readInput(searchBar);
+//                ListView friendList = (ListView) myView.findViewById(R.id.friendlist);
             }
 
             @Override
@@ -56,13 +58,14 @@ public class FriendOverlookFragment extends Fragment {
             }
         });
 
-        ListView list = (ListView) myView.findViewById(R.id.list);
+        ListView list = (ListView) myView.findViewById(R.id.friendlist);
         setHasOptionsMenu(true);
         Intent homeIntent = getActivity().getIntent();
 
         parseFriendsFetcher = new ParseFriendsFetcher(mDialog, getActivity().getApplicationContext(),
                 (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity(),list);
         parseFriendsFetcher.execute(homeIntent.getStringExtra("username"));
+        playerList = parseFriendsFetcher.getFriendsList();
 
         AdapterView.OnItemClickListener mListClickedHandler = new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id) {
@@ -82,7 +85,16 @@ public class FriendOverlookFragment extends Fragment {
             }
         };
         list.setOnItemClickListener(mListClickedHandler);
-
         return myView;
     }
+
+    @Override
+    public void onPause() {
+        Log.e("DEBUG", "OnPause of loginFragment");
+        super.onPause();
+        for (int i = 0; i < playerList.getCount(); i++ ) {
+            ((Player)playerList.getItemAtPosition(i)).cancel();
+        }
+    }
+
 }

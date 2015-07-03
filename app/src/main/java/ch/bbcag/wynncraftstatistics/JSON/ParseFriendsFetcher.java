@@ -31,6 +31,10 @@ public class ParseFriendsFetcher extends JSONConnectionBuilder {
         return JSONParser.parseFriends(inputStream, username);
     }
 
+    public ListView getFriendsList() {
+        return friendsList;
+    }
+
     @Override
     public void useData(Map<String, String> result) {
         List<Player> friendsArray= new ArrayList<Player>();
