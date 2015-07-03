@@ -7,15 +7,18 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import ch.bbcag.wynncraftstatistics.JSON.ParseFriendsFetcher;
+import ch.bbcag.wynncraftstatistics.Player.FriendSearcher;
 import ch.bbcag.wynncraftstatistics.Player.Player;
 import ch.bbcag.wynncraftstatistics.R;
 
@@ -26,10 +29,33 @@ public class FriendOverlookFragment extends Fragment {
     View myView;
     private ProgressDialog mDialog;
     private ParseFriendsFetcher parseFriendsFetcher = null;
-
+    private ParseFriendsFetcher asyncTaskJSONParser = null;
+    private FriendSearcher friendSearcher;
+    private EditText searchBar = null;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
-        myView = inflater.inflate(R.layout.overlook, container, false);
+        myView = inflater.inflate(R.layout.search_layout, container, false);
+
+        TextView title = (TextView) myView.findViewById(R.id.title);
+        title.setText("Friends");
+
+        searchBar = (EditText) myView.findViewById(R.id.searchbar);
+        searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                friendSearcher.readInput(searchBar);
+                ListView friendList = (ListView) myView.findViewById(R.id.friendlist);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
         ListView list = (ListView) myView.findViewById(R.id.list);
         setHasOptionsMenu(true);
         Intent homeIntent = getActivity().getIntent();
@@ -52,18 +78,11 @@ public class FriendOverlookFragment extends Fragment {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.container, new HomeFragment()).commit();
 
+                fragmentManager.beginTransaction().replace(R.id.container,(Fragment) new HomeFragment()).commit();
             }
         };
         list.setOnItemClickListener(mListClickedHandler);
 
         return myView;
     }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.clear();
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_friends_overlook, menu);
-    }
-
 }

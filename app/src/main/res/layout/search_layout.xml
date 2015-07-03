@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Friends"
+        android:text="title"
         android:id="@+id/title"
         android:layout_marginTop="15dp"
         android:layout_alignParentTop="true"
@@ -23,14 +23,31 @@
         android:layout_below="@+id/title"
         android:layout_alignParentStart="true"
         android:layout_marginTop="10dp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_edit_text"
+        android:hint="Search"
+        android:layout_alignTop="@+id/divider"
+        android:layout_alignParentStart="true"
+        android:id="@+id/searchbar"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/white"
+        android:focusableInTouchMode="true"
+        android:maxLength="16"
+        android:windowSoftInputMode="stateHidden"
+        android:inputType="textNoSuggestions"
+        android:singleLine="true" />
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/list"
-        android:layout_below="@+id/divider"
+        android:layout_height="match_parent"
+        android:id="@+id/friendlist"
+        android:layout_below="@+id/searchbar"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/divider2" />
+        android:layout_above="@+id/divider2"
+        android:layout_marginTop="5dp" />
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
@@ -48,4 +65,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp" />
+
 </RelativeLayout>

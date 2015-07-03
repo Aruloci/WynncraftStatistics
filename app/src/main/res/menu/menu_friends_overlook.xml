@@ -2,11 +2,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:support="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/tools">
-
-    <item
-        android:id="@+id/search_friends"
-        android:icon="@drawable/search_ic"
-        android:title="Search"
-        support:showAsAction="collapseActionView|ifRoom"/>
-
 </menu>
