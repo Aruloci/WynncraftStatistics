@@ -3,4 +3,4 @@
     android:layout_height="match_parent" android:choiceMode="singleChoice"
     android:dividerHeight="0dp"
     android:background="@color/grey"
-    tools:context="ch.bbcag.wynncraftstatistics.NavigationDrawerFragment" />
+    tools:context="ch.bbcag.wynncraftstatistics.Activities.HomeScreen.NavigationDrawerFragment" />

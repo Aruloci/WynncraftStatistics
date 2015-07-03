@@ -1,4 +1,4 @@
-package ch.bbcag.wynncraftstatistics;
+package ch.bbcag.wynncraftstatistics.Player;
 
 import android.graphics.Bitmap;
 import android.util.LruCache;

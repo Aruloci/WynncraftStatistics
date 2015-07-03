@@ -1,4 +1,4 @@
-package ch.bbcag.wynncraftstatistics;
+package ch.bbcag.wynncraftstatistics.JSON;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,9 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import ch.bbcag.wynncraftstatistics.Activities.HomeScreen.HomeScreen;
+import ch.bbcag.wynncraftstatistics.Listener.GoButtonListener;
 
 /**
  * Created by zpfisd on 24.06.2015.

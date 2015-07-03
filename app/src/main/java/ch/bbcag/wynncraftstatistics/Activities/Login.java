@@ -1,4 +1,4 @@
-package ch.bbcag.wynncraftstatistics;
+package ch.bbcag.wynncraftstatistics.Activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,6 +7,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+
+import ch.bbcag.wynncraftstatistics.Activities.HomeScreen.HomeScreen;
+import ch.bbcag.wynncraftstatistics.Listener.GoButtonListener;
+import ch.bbcag.wynncraftstatistics.R;
 
 
 public class Login extends Activity {

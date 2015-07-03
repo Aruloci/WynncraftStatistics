@@ -1,4 +1,4 @@
-package ch.bbcag.wynncraftstatistics;
+package ch.bbcag.wynncraftstatistics.Player;
 
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -6,7 +6,7 @@ import android.widget.TextView;
 /**
  * Created by zpfisd on 24.06.2015.
  */
-public class PlayerStatsHolder extends Holder {
+public class PlayerStatsHolder {
     ImageView userIcon;
     TextView rank;
     TextView playtimeText;

@@ -1,4 +1,4 @@
-package ch.bbcag.wynncraftstatistics;
+package ch.bbcag.wynncraftstatistics.Activities.HomeScreen;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -15,13 +15,17 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import ch.bbcag.wynncraftstatistics.JSON.ParseFriendsFetcher;
+import ch.bbcag.wynncraftstatistics.Player.Player;
+import ch.bbcag.wynncraftstatistics.R;
+
 /**
  * Created by zdomaa on 19.06.2015.
  */
 public class FriendOverlookFragment extends Fragment {
     View myView;
     private ProgressDialog mDialog;
-    private AsyncTaskJSONParser asyncTaskJSONParser = null;
+    private ParseFriendsFetcher asyncTaskJSONParser = null;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
@@ -30,8 +34,8 @@ public class FriendOverlookFragment extends Fragment {
         setHasOptionsMenu(true);
         Intent homeIntent = getActivity().getIntent();
 
-        asyncTaskJSONParser = new AsyncTaskJSONParser(mDialog, 2, getActivity().getApplicationContext(), list,
-                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity());
+        asyncTaskJSONParser = new ParseFriendsFetcher(mDialog, getActivity().getApplicationContext(),
+                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity(),list);
         asyncTaskJSONParser.execute(homeIntent.getStringExtra("username"));
 
         AdapterView.OnItemClickListener mListClickedHandler = new AdapterView.OnItemClickListener() {

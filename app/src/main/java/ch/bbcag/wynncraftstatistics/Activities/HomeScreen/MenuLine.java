@@ -1,4 +1,4 @@
-package ch.bbcag.wynncraftstatistics;
+package ch.bbcag.wynncraftstatistics.Activities.HomeScreen;
 
 /**
  * Created by zdomaa on 18.06.2015.

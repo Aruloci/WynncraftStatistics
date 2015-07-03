@@ -1,4 +1,4 @@
-package ch.bbcag.wynncraftstatistics;
+package ch.bbcag.wynncraftstatistics.Player;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.InputStream;
+
+import ch.bbcag.wynncraftstatistics.Player.LruCacheUserIcons;
 
 /**
  * Created by zdomaa on 18.06.2015.

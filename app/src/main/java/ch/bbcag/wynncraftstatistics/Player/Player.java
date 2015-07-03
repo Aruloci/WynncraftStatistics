@@ -1,7 +1,9 @@
-package ch.bbcag.wynncraftstatistics;
+package ch.bbcag.wynncraftstatistics.Player;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
+
+import ch.bbcag.wynncraftstatistics.R;
 
 /**
  * Created by zpfisd on 18.06.2015.

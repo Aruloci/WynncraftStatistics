@@ -1,4 +1,4 @@
-package ch.bbcag.wynncraftstatistics;
+package ch.bbcag.wynncraftstatistics.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import ch.bbcag.wynncraftstatistics.Player.Player;
+import ch.bbcag.wynncraftstatistics.R;
 
 /**
  * Created by zdomaa on 19.06.2015.

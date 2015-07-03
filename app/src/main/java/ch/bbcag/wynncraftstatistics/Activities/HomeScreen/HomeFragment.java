@@ -1,4 +1,4 @@
-package ch.bbcag.wynncraftstatistics;
+package ch.bbcag.wynncraftstatistics.Activities.HomeScreen;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -12,6 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import ch.bbcag.wynncraftstatistics.JSON.PlayerStatsFetcher;
+import ch.bbcag.wynncraftstatistics.Player.Player;
+import ch.bbcag.wynncraftstatistics.Player.PlayerStatsHolder;
+import ch.bbcag.wynncraftstatistics.R;
 
 /**
  * Created by zdomaa on 19.06.2015.
@@ -53,9 +58,8 @@ public class HomeFragment extends Fragment {
                 (TextView) rootView.findViewById(R.id.assassinLabel2)
         );
         mDialog = ProgressDialog.show(getActivity(), getString(R.string.loading), getString(R.string.wait));
-        new AsyncTaskJSONParser(mDialog, 0, getActivity().getApplicationContext(), holder, (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity()).execute(user.getPlayerName());
-
-
+        new PlayerStatsFetcher(mDialog,getActivity().getApplicationContext(),
+                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity(),holder ).execute(user.getPlayerName());
         return rootView;
 
     }

@@ -1,4 +1,4 @@
-package ch.bbcag.wynncraftstatistics;
+package ch.bbcag.wynncraftstatistics.Activities.HomeScreen;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -20,6 +20,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ch.bbcag.wynncraftstatistics.Adapter.DrawerListAdapter;
+import ch.bbcag.wynncraftstatistics.R;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
