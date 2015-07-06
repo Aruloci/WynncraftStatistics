@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import ch.bbcag.wynncraftstatistics.Activities.Login;
+import ch.bbcag.wynncraftstatistics.Activities.WynncraftMapWebView;
 import ch.bbcag.wynncraftstatistics.JSON.PlayerStatsFetcher;
 import ch.bbcag.wynncraftstatistics.Player.Player;
 import ch.bbcag.wynncraftstatistics.Player.PlayerStatsHolder;
@@ -59,6 +60,7 @@ public class HomeScreen extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         android.support.v4.app.Fragment selectedFragment = null;
         boolean isLogout = false;
+        boolean isMap = false;
         this.getIntent().putExtra("mode", "ownName");
         switch (position) {
             case 0:
@@ -74,6 +76,9 @@ public class HomeScreen extends ActionBarActivity
                 selectedFragment = new FriendOverlookFragment();
                 break;
             case 4:
+                isMap = true;
+                break;
+            case 5:
                 isLogout = true;
                 break;
 
@@ -81,13 +86,16 @@ public class HomeScreen extends ActionBarActivity
 
 
         // update the main content by replacing fragments
-        if (!isLogout) {
+        if (!isLogout && !isMap) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.container, selectedFragment).commit();
-        } else {
+        } else if (isLogout){
             Intent logout = new Intent(this, Login.class);
             logout.putExtra("ignoreSavedName", "true");
             this.startActivity(logout);
+        } else if (isMap){
+            Intent map = new Intent(this, WynncraftMapWebView.class);
+            this.startActivity(map);
         }
     }
 

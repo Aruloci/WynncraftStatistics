@@ -108,6 +108,7 @@ public class NavigationDrawerFragment extends Fragment {
         items.add(new MenuLine(-1, ""));
         items.add(new MenuLine(R.drawable.wc_icon, "Server"));
         items.add(new MenuLine(R.drawable.wc_icon, "Friends"));
+        items.add(new MenuLine(R.drawable.wc_icon, "Map"));
         items.add(new MenuLine(R.drawable.wc_icon, "Logout"));
         DrawerListAdapter adapter = new DrawerListAdapter(getActivity(), items, getActivity().getLayoutInflater());
 
