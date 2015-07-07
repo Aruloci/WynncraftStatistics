@@ -1,6 +1,7 @@
 package ch.bbcag.wynncraftstatistics.Player;
 
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import ch.bbcag.wynncraftstatistics.R;
@@ -13,6 +14,15 @@ public class Player {
     private String currentServer;
     private static LruCacheUserIcons cache = new LruCacheUserIcons();
     private ImageDownloader task;
+    private Drawable hardIcon;
+
+    public Drawable getHardIcon() {
+        return hardIcon;
+    }
+
+    public void setHardIcon(Drawable hardIcon) {
+        this.hardIcon = hardIcon;
+    }
 
     /**
      * Cancels the loadImage task

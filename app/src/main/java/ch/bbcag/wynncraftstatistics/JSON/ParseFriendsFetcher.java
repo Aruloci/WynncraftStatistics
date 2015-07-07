@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import ch.bbcag.wynncraftstatistics.Adapter.FriendListAdapter;
+import ch.bbcag.wynncraftstatistics.Adapter.IconTextListAdapter;
 import ch.bbcag.wynncraftstatistics.Player.Player;
 
 /**
@@ -41,6 +41,6 @@ public class ParseFriendsFetcher extends JSONConnectionBuilder {
         for (Map.Entry entry : result.entrySet()){
             friendsArray.add(new Player((String) entry.getValue()));
         }
-        friendsList.setAdapter(new FriendListAdapter(context, friendsArray, activity.getLayoutInflater()));
+        friendsList.setAdapter(new IconTextListAdapter(context, friendsArray, activity.getLayoutInflater()));
     }
 }

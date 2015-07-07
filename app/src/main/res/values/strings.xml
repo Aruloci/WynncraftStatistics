@@ -18,4 +18,7 @@
 
     <string name="no_connection">No internet connection available</string>
     <string name="user_not_found">User was not found</string>
+    <string name="title_activity_wyn_class">WynClassActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

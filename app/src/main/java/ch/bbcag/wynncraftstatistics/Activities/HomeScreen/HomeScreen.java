@@ -76,9 +76,12 @@ public class HomeScreen extends ActionBarActivity
                 selectedFragment = new FriendOverlookFragment();
                 break;
             case 4:
-                isMap = true;
+                selectedFragment = new ClassesOverlookFragment();
                 break;
             case 5:
+                isMap = true;
+                break;
+            case 6:
                 isLogout = true;
                 break;
 

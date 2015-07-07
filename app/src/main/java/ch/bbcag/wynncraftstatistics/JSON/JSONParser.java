@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import ch.bbcag.wynncraftstatistics.Activities.HomeScreen.HomeScreen;
+import ch.bbcag.wynncraftstatistics.HelperClass;
 import ch.bbcag.wynncraftstatistics.Listener.GoButtonListener;
 import ch.bbcag.wynncraftstatistics.ValueComparator;
 
@@ -32,7 +33,7 @@ public class JSONParser {
         Map<String, String> playerStats = new HashMap<String, String>();
 
         try {
-            String input = readInput(inputStream);
+            String input = HelperClass.readInput(inputStream);
             JSONObject playerObject = new JSONObject(input);
             playerStats.put("username", playerObject.getString("username"));
             playerStats.put("rank", playerObject.getString("rank"));
@@ -67,7 +68,7 @@ public class JSONParser {
         Map<String, String> result = new HashMap<String, String>();
 
         try {
-            String input = readInput(inputStream);
+            String input = HelperClass.readInput(inputStream);
             JSONObject playerObject = new JSONObject(input);
             JSONArray friendArray = playerObject.getJSONArray("friends");
 
@@ -90,7 +91,7 @@ public class JSONParser {
 
 
         try {
-            String input = readInput(inputStream);
+            String input = HelperClass.readInput(inputStream);
             JSONObject allServer = new JSONObject(input);
             Iterator keys = allServer.keys();
 
@@ -121,7 +122,7 @@ public class JSONParser {
         Map<String, String> result = new HashMap<String, String>();
 
         try {
-            String input = readInput(inputStream);
+            String input = HelperClass.readInput(inputStream);
             JSONObject playerObject = new JSONObject(input);
             result.put("error", "false");
             Intent homeIntent = new Intent(context, HomeScreen.class);
@@ -143,17 +144,6 @@ public class JSONParser {
 
 
 
-    private static String readInput(InputStream inputStream) throws IOException {
-        StringBuilder resultBuilder = new StringBuilder();
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-
-        String line;
-        while (null != (line = bufferedReader.readLine())) {
-            resultBuilder.append(line);
-        }
-
-        return resultBuilder.toString();
-    }
 
 }

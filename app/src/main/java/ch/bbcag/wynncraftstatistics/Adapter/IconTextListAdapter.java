@@ -16,11 +16,11 @@ import ch.bbcag.wynncraftstatistics.R;
 /**
  * Created by zdomaa on 19.06.2015.
  */
-public class FriendListAdapter extends ArrayAdapter<Player> {
+public class IconTextListAdapter extends ArrayAdapter<Player> {
     private LayoutInflater mInflater;
     private List<Player> items;
 
-    public FriendListAdapter(Context context, List<Player> items, LayoutInflater inflater) {
+    public IconTextListAdapter(Context context, List<Player> items, LayoutInflater inflater) {
         super(context, -1, items);
         this.items = items;
         this.mInflater = inflater;
@@ -28,12 +28,17 @@ public class FriendListAdapter extends ArrayAdapter<Player> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = mInflater.inflate(R.layout.friend_list_item, null);
+        convertView = mInflater.inflate(R.layout.icon_text_list_item, null);
         final Player currItem = (Player) items.get(position);
-
-
         ImageView userIcon = (ImageView) convertView.findViewById(R.id.friendsItem_usericon);
-        currItem.loadPlayerIcon(userIcon, 64);
+
+        if (currItem.getHardIcon() == null) {
+            currItem.loadPlayerIcon(userIcon, 64);
+        } else {
+            userIcon.setImageDrawable(currItem.getHardIcon());
+        }
+
+
         TextView username = (TextView) convertView.findViewById(R.id.friendsItem_username);
         username.setText(currItem.getPlayerName());
 

@@ -15,6 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
 
+import ch.bbcag.wynncraftstatistics.HelperClass;
 import ch.bbcag.wynncraftstatistics.R;
 
 /**
@@ -47,7 +48,7 @@ public abstract class JSONConnectionBuilder extends AsyncTask<String, Void , Map
 
         API_URL += params[0];
 
-        if (isNetworkConnectionAvailable()) {
+        if (HelperClass.isNetworkConnectionAvailable(connectivityManager)) {
             HttpURLConnection connection = null;
             try {
 
@@ -114,9 +115,6 @@ public abstract class JSONConnectionBuilder extends AsyncTask<String, Void , Map
         }
     }
 
-    private boolean isNetworkConnectionAvailable() {
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        return null != networkInfo && networkInfo.isConnected();
-    }
+
 
 }
