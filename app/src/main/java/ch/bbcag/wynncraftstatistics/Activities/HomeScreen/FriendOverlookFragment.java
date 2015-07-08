@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +46,7 @@ public class FriendOverlookFragment extends Fragment {
         TextView title = (TextView) myView.findViewById(R.id.title);
         title.setText("Friends");
 
-        ListView list = (ListView) myView.findViewById(R.id.friendlist);
+        ListView list = (ListView) myView.findViewById(R.id.list);
         setHasOptionsMenu(true);
         Intent homeIntent = getActivity().getIntent();
 
@@ -114,7 +113,7 @@ public class FriendOverlookFragment extends Fragment {
     @Override
     public void onPause() {
         hideSoftKeyboard();
-        Log.v("T", "OnPause of loginFragment");
+        searchBar.setText("");
         super.onPause();
         for (int i = 0; i < playerList.getCount(); i++ ) {
             ((Player)playerList.getItemAtPosition(i)).cancel();

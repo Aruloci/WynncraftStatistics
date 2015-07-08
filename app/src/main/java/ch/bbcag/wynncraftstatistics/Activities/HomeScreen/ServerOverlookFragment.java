@@ -36,6 +36,7 @@ public class ServerOverlookFragment extends Fragment {
         setHasOptionsMenu(true);
         Intent homeIntent = getActivity().getIntent();
 
+        mDialog = ProgressDialog.show(getActivity(), getActivity().getString(R.string.loading), getActivity().getString(R.string.wait));
         parseServerFetcher = new ParseServerFetcher(mDialog, getActivity().getApplicationContext(),
                 (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity(), list);
         parseServerFetcher.execute("");

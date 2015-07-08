@@ -21,11 +21,16 @@ import ch.bbcag.wynncraftstatistics.Player.Player;
  */
 public class ParseItemsFetcher extends JSONConnectionBuilder {
     private ListView itemsList;
+    private List<Player> items = new ArrayList<Player>();
 
     public ParseItemsFetcher(ProgressDialog mDialog, Context context, ConnectivityManager connectivityManager, Activity activity, ListView itemsList) {
         super(mDialog, context, connectivityManager, activity);
         this.itemsList = itemsList;
         API_URL = "https://api.wynncraft.com/public_api.php?action=items";
+    }
+
+    public List<Player> getItems() {
+        return items;
     }
 
     @Override
@@ -35,7 +40,6 @@ public class ParseItemsFetcher extends JSONConnectionBuilder {
 
     @Override
     public void useData(Map<String, String> result) {
-        List<Player> items = new ArrayList<Player>();
         for (Map.Entry entry : result.entrySet()){
             if (entry.getValue().equals("ItemName")){
                 String itemName = (String) entry.getKey();
@@ -48,6 +52,12 @@ public class ParseItemsFetcher extends JSONConnectionBuilder {
 
             }
         }
+
         itemsList.setAdapter(new IconTextListAdapter(context, items, activity.getLayoutInflater()));
     }
+
+    public ListView getItemsList() {
+        return itemsList;
+    }
+
 }

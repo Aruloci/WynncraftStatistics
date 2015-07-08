@@ -1,5 +1,6 @@
 package ch.bbcag.wynncraftstatistics.Player;
 
+import android.util.Log;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
  * Created by zpfisd on 03.07.2015.
  */
 public class FriendSearcher {
+    private final String TAG = "FriendSearcher";
     private ArrayList<Player> friendList;
 
     public FriendSearcher(ArrayList<Player> friendList) {
@@ -30,6 +32,7 @@ public class FriendSearcher {
                 changedFriends.add(friend);
             }
         }
+        Log.v(TAG, changedFriends.toString());
         return changedFriends;
     }
 }

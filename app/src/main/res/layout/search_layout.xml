@@ -42,7 +42,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/friendlist"
+        android:id="@+id/list"
         android:layout_below="@+id/searchbar"
         android:layout_alignParentStart="true"
         android:layout_above="@+id/divider2"
