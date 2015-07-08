@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Yevgen on 07.07.2015.
@@ -30,6 +32,50 @@ public class HelperClass {
 
         return resultBuilder.toString();
     }
+
+    public static int findItemIcon(String itemCat){
+        Map<String , Integer> icons = new HashMap<String , Integer>();
+        icons.put("Shovel", R.drawable.shovel);
+        icons.put("Stick", R.drawable.stick2);
+        icons.put("Bow", R.drawable.bow);
+        icons.put("Shears", R.drawable.shears);
+
+        icons.put("Diamond Boots", R.drawable.diamond_boots);
+        icons.put("Diamond Helmet", R.drawable.diamond_helmet);
+        icons.put("Diamond Leggings", R.drawable.diamond_leggings);
+        icons.put("Diamond Chestplate", R.drawable.diamond_chestplate);
+
+        icons.put("Dyed Leather Boots", R.drawable.leather_boots);
+        icons.put("Dyed Leather Cap", R.drawable.leather_helmet);
+        icons.put("Dyed Leather Pants", R.drawable.leather_leggings);
+        icons.put("Dyed Leather Tunic", R.drawable.leather_chestplate);
+
+        icons.put("Leather Boots", R.drawable.leather_boots);
+        icons.put("Leather Cap", R.drawable.leather_helmet);
+        icons.put("Leather Pants", R.drawable.leather_leggings);
+        icons.put("Leather Tunic", R.drawable.leather_chestplate);
+
+        icons.put("Golden Boots", R.drawable.gold_boots);
+        icons.put("Golden Helmet", R.drawable.gold_helmet);
+        icons.put("Golden Leggings", R.drawable.gold_leggings);
+        icons.put("Golden Chestplate", R.drawable.gold_chestplate);
+
+        icons.put("Iron Boots", R.drawable.iron_boots);
+        icons.put("Iron Helmet", R.drawable.iron_helmet);
+        icons.put("Iron Leggings", R.drawable.iron_leggings);
+        icons.put("Iron Chestplate", R.drawable.iron_chestplate);
+
+        icons.put("Chain Boots", R.drawable.chain_boots);
+        icons.put("Chain Helmet", R.drawable.chain_helmet2);
+        icons.put("Chain Leggings", R.drawable.chain_leggings);
+        icons.put("Chain Chestplate", R.drawable.chain_chestplate2);
+        icons.put("Creeper Head", R.drawable.creeper_head);
+
+
+        return icons.get(itemCat);
+    }
+
+
 
     public static WynncraftClass genereateWynnClass(String classname){
        // {"Warrior", "Archer", "Mage", "Assassin"}

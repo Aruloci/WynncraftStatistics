@@ -80,9 +80,12 @@ public class HomeScreen extends ActionBarActivity
             selectedFragment = new ClassesOverlookFragment();
 
         } else if (position == 5) {
-            isMap = true;
+            selectedFragment = new ItemsOverlookFragment();
 
         } else if (position == 6) {
+            isMap = true;
+
+        } else if (position == 7) {
             isLogout = true;
 
         }

@@ -8,10 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -115,6 +113,34 @@ public class JSONParser {
         }
         Log.v(TAG, sorted_map.toString());
         return sorted_map;
+    }
+
+
+    public static Map<String, String> parseAllItems(InputStream inputStream) {
+        HashMap<String,String> result = new HashMap<String,String>();
+
+
+
+        try {
+            String input = HelperClass.readInput(inputStream);
+            JSONObject allItems = new JSONObject(input);
+            Iterator keys = allItems.keys();
+
+            while (keys.hasNext()) {
+                String key = (String) keys.next();
+                Log.v(TAG, "Current class: " + key);
+                if (!key.equals("request")) {
+                    JSONObject curItem = allItems.getJSONObject(key);
+                    String ItemName = new String(curItem.getString("item_name"));
+                    result.put(ItemName, "ItemName");
+                    result.put(ItemName + "_level", curItem.getString("item_min_lvl"));
+                    result.put(ItemName + "_Cat", curItem.getString("item_minecraft"));
+                }
+            }
+        } catch (JSONException | IOException e) {
+            Log.e(TAG, e.toString());
+        }
+        return result;
     }
 
 
