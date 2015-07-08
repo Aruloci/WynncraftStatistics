@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import ch.bbcag.wynncraftstatistics.JSON.ParseAllItemsFetcher;
+import ch.bbcag.wynncraftstatistics.JSON.ParseItemsFetcher;
 import ch.bbcag.wynncraftstatistics.R;
 
 /**
@@ -33,7 +33,7 @@ public class ItemsOverlook extends Fragment {
         TextView title = (TextView) myView.findViewById(R.id.title);
         title.setText("Items");
         setHasOptionsMenu(true);
-        new ParseAllItemsFetcher(mDialog, getActivity().getApplicationContext(),
+        new ParseItemsFetcher(mDialog, getActivity().getApplicationContext(),
                 (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE), getActivity(),list ).execute("");
 
         AdapterView.OnItemClickListener mListClickedHandler = new AdapterView.OnItemClickListener() {
