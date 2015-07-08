@@ -64,8 +64,9 @@ public class HomeScreen extends ActionBarActivity
         this.getIntent().putExtra("mode", "ownName");
         switch (position) {
             case 0:
-                selectedFragment = new HomeFragment();
-                break;
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+                return;
             case 1:
                 selectedFragment = new HomeFragment();
                 break;
@@ -91,7 +92,7 @@ public class HomeScreen extends ActionBarActivity
         // update the main content by replacing fragments
         if (!isLogout && !isMap) {
             FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.container, selectedFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.container, selectedFragment).addToBackStack(null).commit();
         } else if (isLogout){
             Intent logout = new Intent(this, Login.class);
             logout.putExtra("ignoreSavedName", "true");

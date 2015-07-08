@@ -58,7 +58,7 @@ public class ClassesOverlookFragment extends Fragment {
                 Intent wynClassIntent = getActivity().getIntent();
                 wynClassIntent.putExtra("classname", classname);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.container, new WynClassFragment()).commit();
+                fragmentManager.beginTransaction().replace(R.id.container, new WynClassFragment()).addToBackStack(null).commit();
 
             }
         };

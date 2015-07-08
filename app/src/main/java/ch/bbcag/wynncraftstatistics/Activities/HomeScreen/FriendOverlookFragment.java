@@ -37,7 +37,7 @@ public class FriendOverlookFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         myView = inflater.inflate(R.layout.search_layout, container, false);
-
+        getActivity().getIntent().putExtra("mode", "ownName");
         TextView title = (TextView) myView.findViewById(R.id.title);
         title.setText("Friends");
 
@@ -79,9 +79,8 @@ public class FriendOverlookFragment extends Fragment {
                 getActivity().getIntent().putExtra("mode", "friendName");
                 getActivity().getIntent().putExtra("friendName", SelectedUsername);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+                fragmentManager.beginTransaction().replace(R.id.container, new HomeFragment()).addToBackStack(null).commit();
 
-                fragmentManager.beginTransaction().replace(R.id.container,(Fragment) new HomeFragment()).commit();
             }
         };
         list.setOnItemClickListener(mListClickedHandler);
