@@ -3,6 +3,7 @@ package ch.bbcag.wynncraftstatistics.Player;
 import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zpfisd on 03.07.2015.
@@ -22,8 +23,8 @@ public class FriendSearcher {
         return input;
     }
 
-    public ArrayList<Player> adaptFriendsToInput(String searchInput) {
-        ArrayList<Player> changedFriends = null;
+    public List<Player> adaptFriendsToInput(String searchInput) {
+        List<Player> changedFriends = new ArrayList<Player>();
         for (Player friend : friendList) {
             if (friend.getPlayerName().toLowerCase().contains(searchInput.toLowerCase())) {
                 changedFriends.add(friend);

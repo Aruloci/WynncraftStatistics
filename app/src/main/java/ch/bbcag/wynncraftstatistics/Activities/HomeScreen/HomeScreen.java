@@ -30,7 +30,6 @@ public class HomeScreen extends ActionBarActivity
 
 
     /**
-     *
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
@@ -56,35 +55,35 @@ public class HomeScreen extends ActionBarActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
+
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         android.support.v4.app.Fragment selectedFragment = null;
         boolean isLogout = false;
         boolean isMap = false;
         this.getIntent().putExtra("mode", "ownName");
-        switch (position) {
-            case 0:
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.container, new HomeFragment()).commit();
-                return;
-            case 1:
-                selectedFragment = new HomeFragment();
-                break;
-            case 2:
-                selectedFragment = new ServerOverlookFragment();
-                break;
-            case 3:
-                selectedFragment = new FriendOverlookFragment();
-                break;
-            case 4:
-                selectedFragment = new ClassesOverlookFragment();
-                break;
-            case 5:
-                isMap = true;
-                break;
-            case 6:
-                isLogout = true;
-                break;
+
+        if (position == 0) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+            return;
+        } else if (position == 1) {
+            selectedFragment = new HomeFragment();
+
+        } else if (position == 2) {
+            selectedFragment = new ServerOverlookFragment();
+
+        } else if (position == 3) {
+            selectedFragment = new FriendOverlookFragment();
+
+        } else if (position == 4) {
+            selectedFragment = new ClassesOverlookFragment();
+
+        } else if (position == 5) {
+            isMap = true;
+
+        } else if (position == 6) {
+            isLogout = true;
 
         }
 
@@ -93,11 +92,11 @@ public class HomeScreen extends ActionBarActivity
         if (!isLogout && !isMap) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.container, selectedFragment).addToBackStack(null).commit();
-        } else if (isLogout){
+        } else if (isLogout) {
             Intent logout = new Intent(this, Login.class);
             logout.putExtra("ignoreSavedName", "true");
             this.startActivity(logout);
-        } else if (isMap){
+        } else if (isMap) {
             Intent map = new Intent(this, WynncraftMapWebView.class);
             this.startActivity(map);
         }
@@ -123,7 +122,6 @@ public class HomeScreen extends ActionBarActivity
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
-
 
 
     /**

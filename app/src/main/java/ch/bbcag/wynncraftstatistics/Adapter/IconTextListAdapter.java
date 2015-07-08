@@ -18,12 +18,16 @@ import ch.bbcag.wynncraftstatistics.R;
  */
 public class IconTextListAdapter extends ArrayAdapter<Player> {
     private LayoutInflater mInflater;
-    private List<Player> items;
+    public static List<Player> items;
 
     public IconTextListAdapter(Context context, List<Player> items, LayoutInflater inflater) {
         super(context, -1, items);
         this.items = items;
         this.mInflater = inflater;
+    }
+
+    public static List<Player> getItems() {
+        return items;
     }
 
     @Override

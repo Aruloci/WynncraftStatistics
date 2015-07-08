@@ -19,6 +19,7 @@ import ch.bbcag.wynncraftstatistics.Player.Player;
  */
 public class ParseFriendsFetcher extends JSONConnectionBuilder {
     ListView friendsList;
+    List<Player> items = new ArrayList<Player>();
 
     public ParseFriendsFetcher(ProgressDialog mDialog, Context context, ConnectivityManager connectivityManager, Activity activity, ListView listView) {
         super(mDialog, context, connectivityManager, activity);
@@ -35,12 +36,16 @@ public class ParseFriendsFetcher extends JSONConnectionBuilder {
         return friendsList;
     }
 
+    public List<Player> getItems() {
+        return items;
+    }
+
     @Override
     public void useData(Map<String, String> result) {
-        List<Player> friendsArray= new ArrayList<Player>();
         for (Map.Entry entry : result.entrySet()){
-            friendsArray.add(new Player((String) entry.getValue()));
+            items.add(new Player((String) entry.getValue()));
         }
-        friendsList.setAdapter(new IconTextListAdapter(context, friendsArray, activity.getLayoutInflater()));
+        friendsList.setAdapter(new IconTextListAdapter(context, items, activity.getLayoutInflater()));
+
     }
 }
