@@ -49,6 +49,7 @@ public abstract class JSONConnectionBuilder extends AsyncTask<String, Void , Map
         API_URL += params[0];
 
         if (HelperClass.isNetworkConnectionAvailable(connectivityManager)) {
+
             HttpURLConnection connection = null;
             try {
 
@@ -59,14 +60,14 @@ public abstract class JSONConnectionBuilder extends AsyncTask<String, Void , Map
                 connection.connect();
 
                 int responseCode = connection.getResponseCode();
-
+                String response = connection.getResponseMessage();
                 if (responseCode == HttpURLConnection.HTTP_OK) {
 
                     // Hier hat die Unterklasse zu bestimmen was passiert
                     result = executeJSONOrder(connection.getInputStream(),  params[0], context);
 
                 } else {
-                    Log.e(TAG, String.format("An error occurred while loading the data in the background. HTTP status: %d", responseCode));
+                    Log.e(TAG, String.format("An error occurred while loading the data in the background. HTTP status: %d", responseCode ));
                 }
 
             } catch (Exception e) {

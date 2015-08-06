@@ -13,7 +13,7 @@ public class LruCacheUserIcons extends LruCache<String, Bitmap> {
 
     @Override
     public int sizeOf(String key, Bitmap bitmap) {
-        return bitmap.getByteCount() / 1024 / 8 * 7;
+        return bitmap.getByteCount() / 1024 ;
     }
 
     public Bitmap getBitmapFromMemCache(String key) {
@@ -22,7 +22,7 @@ public class LruCacheUserIcons extends LruCache<String, Bitmap> {
 
     public LruCacheUserIcons() {
         // Ein Achtel von Maximalen Cache Size
-        super(((int) Runtime.getRuntime().maxMemory() / 1024));
+        super(((int) Runtime.getRuntime().maxMemory() / 1024 / 8));
     }
 
     public void addBitmapToMemoryCache(String key, Bitmap bitmap) {

@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.InputStream;
+import java.net.Inet4Address;
+import java.util.ArrayList;
 
 import ch.bbcag.wynncraftstatistics.Player.LruCacheUserIcons;
 
@@ -38,5 +40,15 @@ public class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap bitmap) {
         imageView.setImageBitmap(bitmap);
+        if (Player.getWarteListe().size() > 0) {
+            ArrayList<Object> naechstesIcon = Player.getWarteListe().get(0);
+            Player.getWarteListe().remove(0);
+            Player.orderDownload((Player) naechstesIcon.get(0)
+                    , (ImageView) naechstesIcon.get(1),
+                    (Integer) naechstesIcon.get(2));
+        } else {
+            Player.setIconIsLoading(false);
+        }
+
     }
 }
